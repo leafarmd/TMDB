@@ -8,9 +8,12 @@
 
 import UIKit
 
-class TopRatedMoviesViewController: UIViewController {
+final class TopRatedMoviesViewController: UIViewController {
 
-    let presenter: TopRatedMoviesPresenter
+    @IBOutlet weak var tableView: UITableView!
+    private let presenter: TopRatedMoviesPresenter
+    fileprivate var dataSource: [TopMovieOutput] = []
+    
     
     init(presenter: TopRatedMoviesPresenter) {
         self.presenter = presenter
@@ -18,20 +21,24 @@ class TopRatedMoviesViewController: UIViewController {
         super.init(nibName: "TopRatedMoviesViewController", bundle: nil)
     }
     
-    required init?(coder: NSCoder) { return nil }
+    required init?(coder: NSCoder) { return nil}
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = UIColor.hexStringToUIColor(hex: "#042D2D")
+        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#042D2D")
         navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes =  [.foregroundColor: UIColor.white]
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         presenter.attachView(view: self)
+        tableView.dataSource = self
+        tableView.register(TopRatedMoviesTableViewCell.nib, forCellReuseIdentifier: TopRatedMoviesTableViewCell.identifier)
     }
 }
 
@@ -40,43 +47,40 @@ extension TopRatedMoviesViewController: TopRatedMoviesView {
         title = text
     }
     
-    func updateMoviesList() {
-        
-    }
-    
     func startLoadingFeedback() {
-        
+        Loading.start()
     }
     
     func stopLoadingFeedback() {
-        
+        Loading.stop()
     }
     
     func presenterError(message: String) {
-        
+        showAlert(title: "Error", message: message)
+    }
+    
+    func reloadData(with model: [TopMovieOutput]) {
+        self.dataSource.removeAll()
+        dataSource.append(contentsOf: model)
+        tableView.reloadData()
     }
 }
 
-extension UIColor {
-    class func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-
-        var rgbValue:UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
-
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
+extension TopRatedMoviesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TopRatedMoviesTableViewCell.identifier) as! TopRatedMoviesTableViewCell
+        
+        cell.configure(data: dataSource[indexPath.row])
+        presenter.setActualRow(indexPath.row)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 160
+    }
+    
 }

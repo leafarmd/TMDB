@@ -1,11 +1,21 @@
+//
+//  TopRatedMoviesProtocol.swift
+//  TMDB
+//
+//  Created by Rafael Damasceno on 15/01/20.
+//  Copyright © 2020 RafaelDamasceno. All rights reserved.
+//
+
+import Foundation
+
 import UIKit
 
 protocol TopRatedMoviesView: class {
     func setNavigationTitle(_ text: String)
-    func updateMoviesList()
     func startLoadingFeedback()
     func stopLoadingFeedback()
     func presenterError(message: String)
+    func reloadData(with model: [TopMovieOutput])
 }
 
 protocol TopRatedMoviesServiceInput: class {
@@ -20,17 +30,4 @@ protocol TopRatedMoviesServiceOutput: class {
 
 protocol TopRatedMoviesRoutering: class {
     func makeViewController() -> UIViewController
-}
-
-protocol TopRatedMoviesCellView: class {
-    func setTitle(_ text: String)
-    func setImage(_ image: UIImage)
-    func setDate(_ text: String)
-}
-
-protocol MoviesDataSourceDelegate: class {
-    func fetchNextPage(page: Int)
-    func fetchTopRatedMoviesSucceeded()
-    func fetchTopRatedMoviesFailed(message: String)
-    func selectedMovie(movie: TopRatedMoviesOutput)
 }
