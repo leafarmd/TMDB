@@ -15,6 +15,7 @@ final class TopRatedMoviesPresenter {
     private var totalRows: Int = 1
     private let interactor = TopRatedMoviesInteractor()
     private var results: [TopMovieOutput] = []
+    var router: TopRatedMoviesRoutering?
     
     // MARK: Internal functions
     
@@ -26,7 +27,7 @@ final class TopRatedMoviesPresenter {
     func attachView(view: TopRatedMoviesView) {
         self.view = view
         interactor.fetchTopRatedMovies(page: actualPage)
-        view.setNavigationTitle("Top Rated Movies")
+        view.setNavigationTitle("Top Movies")
     }
     
     func setActualRow(_ row: Int) {
@@ -34,6 +35,11 @@ final class TopRatedMoviesPresenter {
             actualPage += 1
             interactor.fetchTopRatedMovies(page: actualPage)
         }
+    }
+    
+    func movieSelecter(index: Int) {
+        guard let id  = results[index].id else { return }
+        router?.navigateToDetail(id: id)
     }
 }
 

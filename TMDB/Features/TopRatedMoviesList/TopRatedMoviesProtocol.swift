@@ -30,4 +30,5 @@ protocol TopRatedMoviesServiceOutput: class {
 
 protocol TopRatedMoviesRoutering: class {
     func makeViewController() -> UIViewController
+    func navigateToDetail(id: Int)
 }

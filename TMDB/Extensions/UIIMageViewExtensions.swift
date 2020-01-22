@@ -1,7 +1,7 @@
 import UIKit
 
 extension UIImageView {
-    func loadImageFromURL(_ url: String?) {
+    func loadImageFromURL(_ url: String?, alpha: CGFloat = 1, hasPlaceholer: Bool = true) {
         
         if let image = TMDBHolder.shared.cachedImgae[url ?? ""] {
             DispatchQueue.main.async {
@@ -25,26 +25,26 @@ extension UIImageView {
             
             if let url = url {
                 API.loadImage(from: url) { [weak self] result in
-                    activityIndicator.stopAnimating()
-                    activityIndicator.removeFromSuperview()
-                    switch result {
-                    case .success(let image):
-                        self?.image = image
-                    case .failure(_), .APIError(_):
-                        self?.image = UIImage(named: "noimage")
-                    }
-                    self?.alpha = 0
-                    UIView.animate(withDuration: 0.2) {
-                        self?.alpha = 1.0
+                    DispatchQueue.main.async {
+                        activityIndicator.stopAnimating()
+                        activityIndicator.removeFromSuperview()
+                        switch result {
+                        case .success(let image):
+                            self?.image = image
+                        case .failure(_), .APIError(_):
+                            self?.image = UIImage(named: hasPlaceholer ? "noimage" : "")
+                        }
+                        self?.alpha = 0
+                        UIView.animate(withDuration: 0.2) {
+                            self?.alpha = alpha
+                        }
                     }
                 }
             } else {
                 activityIndicator.stopAnimating()
                 activityIndicator.removeFromSuperview()
-                self.image = UIImage(named: "noimage")
+                self.image = UIImage(named: hasPlaceholer ? "noimage" : "")
             }
         }
-        
-        
     }
 }

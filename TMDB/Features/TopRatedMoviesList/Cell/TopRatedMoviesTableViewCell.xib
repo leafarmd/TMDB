@@ -22,7 +22,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J6-G8-mk2">
                                 <rect key="frame" x="14" y="5" width="292" height="150"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1fs-Ft-lFX">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1fs-Ft-lFX">
                                         <rect key="frame" x="9" y="11" width="93" height="127"/>
                                         <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -84,7 +84,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.3411764706" green="0.44705882349999998" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.16301030375592221" green="0.21593572705329955" blue="0.21593572705329955" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="160" id="EN2-1b-6zj"/>
                             <constraint firstItem="7J6-G8-mk2" firstAttribute="leading" secondItem="WJh-5P-4Vg" secondAttribute="leading" constant="14" id="JA0-Bw-79u"/>

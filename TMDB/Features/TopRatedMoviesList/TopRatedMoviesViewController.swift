@@ -28,6 +28,7 @@ final class TopRatedMoviesViewController: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#042D2D")
+        navigationController?.navigationBar.backgroundColor = UIColor.hexStringToUIColor(hex: "#042D2D")
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes =  [.foregroundColor: UIColor.white]
@@ -38,6 +39,7 @@ final class TopRatedMoviesViewController: UIViewController {
 
         presenter.attachView(view: self)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(TopRatedMoviesTableViewCell.nib, forCellReuseIdentifier: TopRatedMoviesTableViewCell.identifier)
     }
 }
@@ -83,4 +85,10 @@ extension TopRatedMoviesViewController: UITableViewDataSource {
         return 160
     }
     
+}
+
+extension TopRatedMoviesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.movieSelecter(index: indexPath.row)
+    }
 }

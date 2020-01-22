@@ -27,8 +27,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //let router = UpcomingMoviesRouter(navigator: navigator)
         window?.rootViewController = navigator
         window?.makeKeyAndVisible()
-        window?.rootNavigationController?.pushViewController(TopRatedMoviesViewController(presenter: TopRatedMoviesPresenter()),
-                                                                                            animated: false)
+        
+        let router = TopRatedMoviesRouter(navigator: navigator)
+        navigator.pushViewController(router.makeViewController(), animated: true)
+        //window?.rootNavigationController?.pushViewController(TopRatedMoviesViewController(presenter: TopRatedMoviesPresenter()),
+//                                                                                            animated: false)
     }
 }
 

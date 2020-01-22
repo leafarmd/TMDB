@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MovieCreditsView" customModule="TMDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nb5-ZG-SIo">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WLP-Q1-yY2">
+                            <rect key="frame" x="0.0" y="60" width="414" height="140"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="140" id="WKM-lT-czd"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J2D-Y5-jxw">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="WLP-Q1-yY2" secondAttribute="trailing" id="PQK-CG-5jv"/>
+                        <constraint firstAttribute="bottom" secondItem="WLP-Q1-yY2" secondAttribute="bottom" id="miB-jl-VVV"/>
+                        <constraint firstItem="WLP-Q1-yY2" firstAttribute="leading" secondItem="nb5-ZG-SIo" secondAttribute="leading" id="nyI-VV-SeW"/>
+                        <constraint firstAttribute="height" constant="200" id="oiE-7c-9zn"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="nb5-ZG-SIo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="q22-cR-8To"/>
+                <constraint firstItem="nb5-ZG-SIo" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="qxi-2o-aaR"/>
+                <constraint firstItem="nb5-ZG-SIo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="v6M-j7-8Iv"/>
+                <constraint firstItem="nb5-ZG-SIo" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="zgn-v9-zoe"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="collectionView" destination="WLP-Q1-yY2" id="zDQ-vb-03n"/>
+            </connections>
+            <point key="canvasLocation" x="134.78260869565219" y="97.767857142857139"/>
+        </view>
+    </objects>
+</document>

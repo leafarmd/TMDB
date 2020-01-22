@@ -15,7 +15,13 @@ class TopRatedMoviesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var viewCell: UIView!
     @IBOutlet weak var viewRating: UIView!
-    @IBOutlet weak var imageViewPoster: UIImageView!
+    @IBOutlet weak var imageViewPoster: UIImageView! {
+        didSet {
+            imageViewPoster.layer.borderWidth = 1
+            imageViewPoster.layer.borderColor = UIColor.hexStringToUIColor(hex: "#03D475").cgColor
+            imageViewPoster.layer.cornerRadius = 5
+        }
+    }
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var labelRating: UILabel!
@@ -25,8 +31,6 @@ class TopRatedMoviesTableViewCell: UITableViewCell {
     func configure(data: TopMovieOutput) {
         viewCell.layer.cornerRadius = 5
         viewRating.layer.cornerRadius = 5
-        imageViewPoster?.layer.cornerRadius = 5
-        imageViewPoster?.clipsToBounds = true
         imageViewPoster?.loadImageFromURL(data.posterPath)
         labelTitle.text = data.title
         labelDescription.text = data.overview ?? ""
@@ -41,8 +45,6 @@ class TopRatedMoviesTableViewCell: UITableViewCell {
         } else {
             labelReleaseYear.text = "N/A"
         }
-        
-        
     }
     
     override func prepareForReuse() {
