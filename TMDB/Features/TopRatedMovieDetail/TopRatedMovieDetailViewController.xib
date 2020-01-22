@@ -69,10 +69,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJf-BT-R6Y">
-                                    <rect key="frame" x="354" y="248" width="44" height="44"/>
+                                    <rect key="frame" x="350" y="248" width="48" height="44"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaJ-Jx-Teq">
-                                            <rect key="frame" x="-14" y="5" width="72" height="34"/>
+                                            <rect key="frame" x="-12" y="5" width="72" height="34"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -82,7 +82,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="MKj-Fy-kpy"/>
                                         <constraint firstItem="IaJ-Jx-Teq" firstAttribute="centerY" secondItem="UJf-BT-R6Y" secondAttribute="centerY" id="te2-Rl-Wzq"/>
-                                        <constraint firstAttribute="width" constant="44" id="thi-3W-hYX"/>
+                                        <constraint firstAttribute="width" constant="48" id="thi-3W-hYX"/>
                                         <constraint firstItem="IaJ-Jx-Teq" firstAttribute="centerX" secondItem="UJf-BT-R6Y" secondAttribute="centerX" id="tvp-wQ-xsv"/>
                                     </constraints>
                                 </view>
