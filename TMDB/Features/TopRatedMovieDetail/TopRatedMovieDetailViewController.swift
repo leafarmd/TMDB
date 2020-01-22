@@ -11,7 +11,13 @@ import UIKit
 class TopRatedMovieDetailViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
-    
+
+    @IBOutlet weak var viewRating: UIView! {
+        didSet {
+            viewRating.layer.cornerRadius = 5
+        }
+    }
+    @IBOutlet weak var labelRating: UILabel!
     @IBOutlet weak var imageBackDrop: UIImageView!
     @IBOutlet weak var imagePoster: UIImageView!  {
         didSet {
@@ -77,7 +83,7 @@ extension TopRatedMovieDetailViewController: TopRatedMovieDetailView {
     }
     
     func setRating(_ rating: String) {
-        
+        labelRating.text = rating
     }
     
     func setImages(_ images: [String]) {
@@ -103,6 +109,6 @@ extension TopRatedMovieDetailViewController: TopRatedMovieDetailView {
     }
     
     func showItems() {
-        view.subviews.forEach { $0.alpha = 0 }
+        view.subviews.forEach { $0.alpha = 1 }
     }
 }
