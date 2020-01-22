@@ -16,8 +16,13 @@ This application was made with protocol oriented MVP architecture.
 
 ## TO DO
 >  Design improvements
+
 >  Unit tests
+
 >  LaunchScreen
+
 >  String Internationalization
+
 >  Search feature
+
 >  Image gallery feature
